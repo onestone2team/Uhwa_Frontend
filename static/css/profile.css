@@ -575,6 +575,102 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	transition: background .2s linear;
 }
 
+/* 모달 창 화면 */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: block;
+  }
+  
+.modal_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+    width: 600px;
+    height: 400px;
+  
+    padding: 40px;
+  
+    text-align: center;
+  
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.modal_title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.modal_title_side{
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+.profile_img img{
+    height: 120px; 
+    width:120px; 
+    padding:10px; 
+    border-radius:60px;
+    display: inline-block;
+}
+
+.profile_img div {
+    display: inline-block;
+    margin-right: 50px;
+    height: auto;
+    
+}
+
+.profile_img div span {
+    font-weight:bold; 
+    font-size:20px;
+}
+
+.filebox label {
+    display: inline-block;
+    padding: .5em .75em;
+    color: #999;
+    font-size: inherit;
+    line-height: normal;
+    vertical-align: middle;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    border: 1px solid #ebebeb;
+    border-bottom-color: #e2e2e2;
+    border-radius: .25em;
+}
+
+.filebox input[type="file"] {  /* 파일 필드 숨기기 */
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+
+
 
 
 

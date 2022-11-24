@@ -31,7 +31,7 @@
     
                     <h1 class="profile-user-name">username</h1>
     
-                    <button class="btn profile-edit-btn">Edit Profile</button>
+                    <button class="btn profile-edit-btn" id="editButton">Edit Profile</button>
     
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
     
@@ -287,8 +287,76 @@
             
         </div>
         <!-- End of container -->
-    
     </main>
+    <div class="modal">
+        <div class="modal_body">
+            <div class="modal_title">
+                <div class="modal_title_side"></div>
+                <div> 프로필 수정 </div>
+                <div class="modal_title_side">
+                    <span id="close_modal" class="material-icons-outlined">
+                        X
+                    </span>
+                </div>
+            </div>
+            <div class="media-body" id = "four">
+                    <div id="info_container">
+        
+                        <div class="profile_img">
+                            
+                            <img src="https://www.mokpo.go.kr/build/images/1517/15172944/1517294405.jpg/666x1x85/666x1_1517294405.jpg" alt="프로필사진" id="output_image">
+
+                            <div>
+                                <span class="username">email@naver.com</span>
+                            </div>
+                            <div class="filebox">
+                                <label for="input_image">업로드</label>
+                                <input type='file' name="image" id="input_image">
+                            </div>
+                        </div>
+                        
+                    </div>
+                                       
+                    <div class="form-group mb-2" style= "font-weight:bold; font-size:12px;">
+
+                        <div class="input-group mb-3">
+                            <label for="" class="col-sm-2 col-form-label">name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  id="author_name" name="author_name" placeholder="이름" value="프로필 이름">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label for="" class="col-sm-2 col-form-label">password</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control"  id="password" name="password" placeholder="이름" value="패스워드 입력">
+                            </div>
+                        </div>
+
+                        
+                        <div class="input-group mb-3">
+                            <label for="" class="col-sm-2 col-form-label">phone</label>
+                            <div class="col-sm-10">
+                                <input type="num" class="form-control"  id="phone" value="010-0000-0000">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label for="" class="col-sm-2 col-form-label">address</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="address" name="address" value="강원도 산골마을">
+                            
+                            </div>
+                        </div> 
+                    </div>
+                    <div style="float: right">
+                        <button class="btn btn-primary" onclick="editProfile()">수정 하기</button>
+                    </div>      
+            </div>
+
+        </div>
+            
+    </div>
     
     <script src='../static/js/profile.js'> </script>
 </body>
