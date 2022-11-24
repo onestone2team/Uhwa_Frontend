@@ -1,0 +1,201 @@
+section {
+    position: relative;
+    min-height: 100vh;
+    background-color: #eee;
+    display: flex;
+    
+    padding: 20px;
+  }
+
+  body {
+    background: #ecf0f1;
+    line-height: 1.4;
+    font-family: sans-serif;
+  }
+  
+  .card-content h2 {
+    font-size: 2em;
+    color: #e74c3c;  
+  }
+
+   /*--------------------------------------------------------------
+  cover styles
+  --------------------------------------------------------------*/
+  
+  .cover-image {
+    width: auto;
+    height: 250px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.466), rgba(255, 255, 255, 0.068)), url("https://www.ikea.com/kr/en/images/products/komplement-clothes-rail-white__0954698_ph162826_s5.jpg");
+    background-position:center;
+    padding: 0px 60px;
+    position: relative;
+  }
+
+  .cover-text {
+    position: absolute;    /*절대값으로 위치를 설정*/
+    top: 20%;
+    background-color: rgba(235, 243, 243, 0.39);
+    width: 90%;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .cover-text h2{
+    color :rgb(190, 19, 233);
+  }
+
+
+  .inner-text{
+    text-align: center;
+    font-size: 15px;
+    color :rgb(107, 97, 97);
+  }
+  
+  /*--------------------------------------------------------------
+  pagination styles
+  --------------------------------------------------------------*/
+
+  .pagination-style{
+    position: absolute;
+    right: 50%;
+  }
+  
+
+  
+  /*--------------------------------------------------------------
+  Base styles
+  --------------------------------------------------------------*/
+
+  .sidebar {
+    padding: .5em 1.4em 1em;
+    background: hsl(0, 0%, 90%);
+    overflow: hidden;
+  }
+  
+  .example-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .example-menu a {
+    display: block;
+    padding: .4em 0;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.5s ease;
+  }
+  
+  
+  
+
+  
+  /*--------------------------------------------------------------
+  Flexbox styles
+  --------------------------------------------------------------*/
+  @media screen and (min-width: 40em) {
+    .outer-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .content {
+      display: flex;
+    }
+    .post-content {
+      max-width: 40em;
+      margin: 0 auto;
+    }
+    .main-area {
+      flex: 1 1 auto;
+      order: 1;
+    }
+    .sidebar {
+      flex: 0 0 12em;
+      order: 2;
+    }
+    .sidebar-left {
+      order: 0;
+    }
+    .no-sidebar {
+      flex-direction: column;
+    }
+    .hide {
+      flex: 0 0 0;
+      padding: 0;
+      color: hsla(0, 0%, 0%, 0);
+      transition: color .2s ease, flex .5s ease .3s, padding .5s ease .3s;
+    }
+    .hide a {
+      color: hsla(0, 0%, 0%, 0);
+    }
+  } /* mq 40em */
+  
+ 
+  .main-area {
+    padding: 2em;
+  }
+  
+  .card {
+    background: white;
+    margin-bottom: 2em; 
+  }
+  
+  .card a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .card a:hover {
+    box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+  }
+  
+  .card-content {
+    padding: 1.4em;
+  }
+  
+  .card-content h2 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-weight: normal;
+  }
+  
+  .card-content p {
+    font-size: 95%;
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+  }
+  
+  /*--------------------------------------------------------------
+  Flexbox card styles
+  --------------------------------------------------------------*/
+  @media screen and (min-width: 40em) {  
+    .cards {
+      margin-top: -1em;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  
+    .card {
+      margin-bottom: 1em;
+      display: flex;
+      flex: 0 1 calc(50% - 0.5em);
+      /* width: calc(50% - 1em); */
+    }
+  } /* mq 40em*/
+  
+  @media screen and (min-width: 60em) {
+    .cards {
+      margin-top: inherit;
+    }
+    
+    .card {
+      margin-bottom: 2em;
+      display: flex;
+      flex: 0 1 calc(33% - 0.5em);
+      /* width: calc(33% - 1em); */
+    }
+  } /* mq 60em*/

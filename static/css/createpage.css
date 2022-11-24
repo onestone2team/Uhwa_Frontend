@@ -1,0 +1,119 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+section {
+    position: relative;
+    min-height: 90vh;
+    background-image: linear-gradient(rgba(230, 215, 215, 0.479), rgba(236, 222, 222, 0.479)), url("../img/orderbackground.jpg");
+
+    display: flex;
+    padding: 20px;
+}
+
+
+/* 이미지 업로드 스타일  */
+
+.img-layout {
+    height: 300px;
+}
+
+.label-style{
+    width: 100%;
+}
+
+.label-style div{
+    width: 100%;
+    text-align : center;
+    font-family: Raleway;
+    color: rgb(255, 255, 255);
+}
+
+.btn-upload {
+    width: 100%;
+    height: 260px;
+    background: rgb(14, 13, 13);
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-upload:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+}
+  
+#file {
+    display: none;
+}
+
+.inputfile{
+
+    display: none;
+}
+
+.font-style{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    height: 300px;
+    text-align: center;
+    
+}
+
+.font-style p {
+    color: rgb(202, 128, 128);
+    font-size: 50px;
+    width: 60%;
+}
+
+/* category 선택  */
+
+.category-style {
+    margin: 80px 1px;
+    width: 57%;
+    height: 300px;
+    
+    border-radius: 1% 1% 2% 4% / 2% 6% 5% 4%;
+}
+
+.scroll-form {
+    padding: 30px;
+    width: 280px;
+    height: 300px;
+    
+}
+
+.scroll-style::-webkit-scrollbar {
+    display: none;
+}
+
+.fit-picture {
+    width: 300px;
+    height: 300px;
+}
+
+.button-style {
+    margin-top: -120px;
+    width: 200px;
+    height: 60px;
+    float: right;
+    border: 0;
+    outline: none;
+    font-size: 30px;
+    background: rgb(255, 255, 255);
+    color: rgb(26, 25, 25);
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid #353535;
+}
+
+.button-style:hover{
+    background: rgb(77,77,77);
+    color: #fff;
+}
