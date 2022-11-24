@@ -8,29 +8,64 @@ section {
     padding: 20px;
 }
 
+.test {
+    background-color: rgba(255, 255, 255, 0.452);
+    border: 1px solid rgba(78, 75, 75, 0.575);
+    height: 600px;
+    border-radius: 10px;
+}
+.imagein-form {
+    width: 100%;
+    height: 60%;
+}
+.categoryin-form{
+    width: 100%;
+    height: 40%;
+    padding: 10px 50px;
+}
+.sum-titleform{
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+}
+
+.sum-titleform p{
+    font-size: 15px;
+}
+
+
+.sum-imageform {
+    height: 80%;
+    padding: auto;
+}
+.sum-buttonform {
+    height: 10%;
+    float: right;
+}
+
+
 
 /* 이미지 업로드 스타일  */
 
-.img-layout {
-    height: 300px;
-}
-
 .label-style{
     width: 100%;
+    
 }
 
 .label-style div{
     width: 100%;
     text-align : center;
     font-family: Raleway;
-    color: rgb(255, 255, 255);
+    color: rgb(19, 18, 18);
+    
 }
 
 .btn-upload {
     width: 100%;
-    height: 260px;
-    background: rgb(14, 13, 13);
-    border: 1px solid rgb(77,77,77);
+    height: 220px;
+    background: rgb(255, 255, 255);
+    border: 3px solid rgb(77,77,77);
     border-radius: 10px;
     font-weight: 500;
     cursor: pointer;
@@ -41,6 +76,40 @@ section {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.start-button {
+    width: 100px;
+    height: 35px;
+    border-radius: 15px;
+    margin-right: 15px;
+    background: rgb(255, 255, 255);
+    border: 3px solid rgb(77,77,77);
+    font-size: 10px;
+}
+.start-button:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+}
+
+.save-button {
+    width: 120px;
+    height: 35px;
+    border-radius: 5px;
+    margin-right: 15px;
+    background: rgb(255, 255, 255);
+    border: 3px solid rgb(77,77,77);
+    font-size: 12px;
+    float: right;
+    position:relative;
+    top:430px;
+}
+
+.save-button:hover {
+    background: rgb(77,77,77);
+    color: #fff;
+}
+
+
 
 .btn-upload:hover {
     background: rgb(77,77,77);
@@ -83,9 +152,15 @@ section {
 }
 
 .scroll-form {
-    padding: 30px;
+    padding: 10px;
     width: 280px;
-    height: 300px;
+    height: auto;
+    
+}
+.scroll-image{
+    padding: 20px;
+    width: 280px;
+    height: auto;
     
 }
 
@@ -94,8 +169,10 @@ section {
 }
 
 .fit-picture {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 180px;
 }
 
 .button-style {
@@ -116,4 +193,25 @@ section {
 .button-style:hover{
     background: rgb(77,77,77);
     color: #fff;
+}
+
+.clothes-div {
+    background-image: url("https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.image-position {
+    border: 1px solid red;
+    position: relative;
+    width: 30%;
+    height: 0;
+    padding-top:20%;
+    top: 40%;
+    left: 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
