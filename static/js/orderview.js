@@ -1,85 +1,31 @@
-var check = false;
 
-function changeVal(el) {
-  var qt = parseFloat(el.parent().children(".qt").html());
-  var price = parseFloat(el.parent().children(".price").html());
-  var eq = Math.round(price * qt * 100) / 100;
+window.onload=()=>{
+  $("#headers").load("../templates/navigation.html");
   
-  el.parent().children(".full-price").html( eq + "€" );
-  
-  changeTotal();			
 }
 
-function changeTotal() {
-  
-  var price = 0;
-  
-  $(".full-price").each(function(index){
-    price += parseFloat($(".full-price").eq(index).html());
-  });
-  
-  price = Math.round(price * 100) / 100;
-  var tax = Math.round(price * 0.05 * 100) / 100
-  var shipping = parseFloat($(".shipping span").html());
-  var fullPrice = Math.round((price + tax + shipping) *100) / 100;
-  
-  if(price == 0) {
-    fullPrice = 0;
+function statusButton() {
+  console.log("상태 변경 버튼 눌림")
+  var status_str = document.getElementById('status_select');
+  var status_text = document.getElementById('order_status');
+
+  orderstatus = status_str.options[status_str.selectedIndex].text
+  value = status_str.options[status_str.selectedIndex].value
+
+  console.log(orderstatus, value)
+  if (value >= 0){
+    status_text.innerText = orderstatus
+    if (value==1){
+      status_text.style.border = "2px solid green"
+      status_text.style.color = "green"
+    } else if (value==2){
+      status_text.style.border = "2px solid black"
+      status_text.style.color = "black"
+
+    } 
+    alert("상태를 변경 완료")
+
+  } else{
+    alert("상태를 선택해 주세요")
   }
-  
-  $(".subtotal span").html(price);
-  $(".tax span").html(tax);
-  $(".total span").html(fullPrice);
 }
-
-$(document).ready(function(){
-  
-  $(".remove").click(function(){
-    var el = $(this);
-    el.parent().parent().addClass("removed");
-    window.setTimeout(
-      function(){
-        el.parent().parent().slideUp('fast', function() { 
-          el.parent().parent().remove(); 
-          if($(".product").length == 0) {
-            if(check) {
-              $("#cart").html("<h1>The shop does not function, yet!</h1><p>If you liked my shopping cart, please take a second and heart this Pen on <a href='https://codepen.io/ziga-miklic/pen/xhpob'>CodePen</a>. Thank you!</p>");
-            } else {
-              $("#cart").html("<h1>No products!</h1>");
-            }
-          }
-          changeTotal(); 
-        });
-      }, 200);
-  });
-  
-  $(".qt-plus").click(function(){
-    $(this).parent().children(".qt").html(parseInt($(this).parent().children(".qt").html()) + 1);
-    
-    $(this).parent().children(".full-price").addClass("added");
-    
-    var el = $(this);
-    window.setTimeout(function(){el.parent().children(".full-price").removeClass("added"); changeVal(el);}, 150);
-  });
-  
-  $(".qt-minus").click(function(){
-    
-    child = $(this).parent().children(".qt");
-    
-    if(parseInt(child.html()) > 1) {
-      child.html(parseInt(child.html()) - 1);
-    }
-    
-    $(this).parent().children(".full-price").addClass("minused");
-    
-    var el = $(this);
-    window.setTimeout(function(){el.parent().children(".full-price").removeClass("minused"); changeVal(el);}, 150);
-  });
-  
-  window.setTimeout(function(){$(".is-open").removeClass("is-open")}, 1200);
-  
-  $(".btn").click(function(){
-    check = true;
-    $(".remove").click();
-  });
-});

@@ -15,75 +15,69 @@
 <body>
     <div id="headers"></div>
     <section>
-        
-        
         <div class="container">
-            <div class="row align-items-start">
-
-                <div class="col-3 img-layout">
-                    <label for="file" class="label-style">
-                        <div>content 이미지</div>
-                        <div class="btn-upload" id="content_preview">파일 업로드하기</div>
-                    </label>
-                    <input type="file" name="content" id="file" onchange="contentReadURL(this);">
-                </div>
-                <div class="col-1 font-style">
-                    <p>+</p>
-                </div>
-                <div class="col-3 img-layout">
-                    
-                    <label for="input-file" class="label-style">
-                        <div>style 이미지</div>
-                        <div class="btn-upload" id="style_preview">파일 업로드하기</div>
-                    </label>
-                    <input type="file" name="content" id="input-file" class="inputfile" onchange="ReadURL(this);">
-                    
-                </div>
-                <div class="col-1 font-style">
-                    <p>=</p>
-                </div>
-                
-                <div class="col-4 img-layout">
-                    <div class="label-style">
-                        <div class="label-style">출력 이미지</div>
-                        <button class="btn-upload" id="content_preview" onclick="imageStart()"></button>
+            <div class="row">
+              <div class="col-7 test">
+                <div class="imagein-form">
+                    <div class="sum-titleform">
+                        <p>왼쪽 사진이 메인이며 오른쪽 사진 풍경으로 변환합니다.</p>
+                    </div>
+                    <div class="row align-items-start sum-imageform">
+                        <div class="col-5 img-layout">
+                            <label for="file" class="label-style">
+                                <div>content 이미지</div>
+                                <div class="btn-upload" id="content_preview">파일 업로드하기</div>
+                            </label>
+                            <input type="file" name="content" id="file" onchange="contentReadURL(this);">
+                        </div>
+                        <div class="col-2 font-style">
+                            <p>+</p>
+                        </div>
+                        <div class="col-5 img-layout">
+                            
+                            <label for="input-file" class="label-style">
+                                <div>style 이미지</div>
+                                <div class="btn-upload" id="style_preview">파일 업로드하기</div>
+                            </label>
+                            <input type="file" name="content" id="input-file" class="inputfile" onchange="ReadURL(this);">
+                            
+                        </div>
                     </div>
                     
+                    <div class="sum-buttonform">
+                        <button class="start-button" id="content_preview" onclick="imageStart()">머신러닝 시작</button>
+                    </div>
                 </div>
+                <div class="categoryin-form">
+                    <div class="row">
+                        <div class = "col-4 img-layout scroll-form label-style">
+                            <div>굿즈를 선택해 주세요</div>
+                            <select class="form-select scroll-style" size="7" aria-label="size 3 select example" id="select_value" onchange="clotheChange()">
+                                <option selected>...</option>
+                                <option value="0">셔츠</option>
+                                <option value="1">모자</option>
+                                <option value="2">후드</option>
+                                <option value="3">반팔티</option>
+                            </select>
+                        </div>
+                        <div class = "col-4 img-layout scroll-image">
+                            <img class="fit-picture" id = "show_picture"
+                                src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg"
+                                alt="Grapefruit slice atop a pile of other slices">
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col-5 test clothes-div" id="clothes_div">
+                <div class="image-position" id="image_position">
+                </div>
+
+                <button class="save-button" id="content_preview" onclick="saveButton()">상품 게시글 저장</button>
+              </div>
             </div>
-            <div class ="row category-style">
-                
-                <div class = "col-4 img-layout scroll-form label-style">
-                    <div>굿즈를 선택해 주세요</div>
-                    <select class="form-select scroll-style" size="8" aria-label="size 3 select example">
-                        <option selected>...</option>
-                        <option value="1">셔츠</option>
-                        <option value="2">모자</option>
-                        <option value="3">후드</option>
-                        <option value="3">반팔티</option>
 
-                    </select>
-                </div>
-                <div class="col-1 font-style">
-                    
-                </div>
-
-                <div class = "col-4 img-layout scroll-form">
-                    <img class="fit-picture"
-                        src="../static/img/shirt.jpg"
-                        alt="Grapefruit slice atop a pile of other slices">
-                </div>
-            </div>
-
-            <button class='button-style' onclick="saveButton()">저장</button>
- 
-           
+            
         </div>
-        
-
-        
-
-
 
         
     </section>
