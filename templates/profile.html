@@ -23,15 +23,15 @@
     
                 <div class="profile-image">
     
-                    <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces" alt="">
+                    <img id="profileimage" src="" alt="">
     
                 </div>
     
                 <div class="profile-user-settings">
     
-                    <h1 class="profile-user-name">username</h1>
+                    <h1 class="profile-user-name" id="profilename"></h1>
     
-                    <button class="btn profile-edit-btn" id="editButton">Edit Profile</button>
+                    <button class="btn profile-edit-btn" id="editButton" onclick="viewProfile()">Edit Profile</button>
     
                     <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
     
@@ -40,14 +40,15 @@
                 <div class="profile-stats">
     
                     <ul>
-                        <li><span class="profile-stat-count">20</span> posts</li>
+                        <li><span class="profile-stat-count" id="post_count">20</span> posts</li>
                     </ul>
     
                 </div>
     
                 <div class="profile-bio">
-    
-                    <p><span class="profile-real-name">효진님</span> 메롱 📷✈️🏕️</p>
+                    <p><span class="profile-real-name">이메일 :</span> <span id="profileemail"></span> / <span class="profile-real-name">핸드폰 번호 :</span> <span id="profilephone"></span></p>
+                    <p><span class="profile-real-name">주소 :</span> <span id="profileaddress"></span> </p>
+                    
     
                 </div>
     
@@ -81,204 +82,12 @@
 
             <!-- 내 게시글 모아보기 -->
             <div class="gallery gallery-mypage" id= "gallery_mypage">
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                
-                
-                                 
             </div>
             <!-- 내 찜한 상품 모아보기 -->
-            <div class="gallery gallery-bookmark" id= "gallery_bookmark">
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="http://www.nbn-news.co.kr/news/photo/202006/46255_45413_1911.jpg" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://cdn.ilivingtv.co.kr/news/photo/201808/632_806_2429.jpg" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-type">
-    
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-    
-                    </div>
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-    
-                <div class="gallery-item" tabindex="0">
-    
-                    <img src="https://wimg.mk.co.kr/meet/neds/2020/07/image_readtop_2020_697200_15941485824269892.jpg" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-    
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                        </ul>
-    
-                    </div>
-    
-                </div>
-    
-                <div class="gallery-item" tabindex="0">
-                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                    <div class="gallery-item-type">
-                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-                    </div>
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="gallery-item" tabindex="0">
-                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-    
-                    <div class="gallery-item-info">
-                        <ul>
-                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
-                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                        </ul>
-                    </div>
-                </div>           
+            <div class="gallery gallery-bookmark" id= "gallery_bookmark">        
             </div>
             <!-- 주문 상품 모아보기 -->
-            <div class="order-form" id = "order_list">
-                <article class="product">
-                    <header>
-                        <a class="remove">
-                            <img src="../static/img/image (4).png" alt="">
-    
-                            <h3>Remove product</h3>
-                        </a>
-                    </header>
-    
-                    <div class="content">
-    
-                        <h1>셔츠</h1>
-    
-                        <h3>사이즈 : M</h3>
-    
-                        
-                    </div>
-    
-                    <footer class="content">
-                        
-                        <span class="qt-minus">수량 :</span>
-                        <span class="qt">1</span>
-                        
-    
-                        <h2 class="full-price">
-                            160000 <span>won</span>
-                        </h2>
-    
-                        <h2 class="price">
-                            160000 <span>won</span>
-                        </h2>
-                    </footer>
-                </article>
-                <article class="product">
-                    <header>
-                        <a class="remove">
-                            <img src="https://cdn.hellodd.com/news/photo/201909/69577_craw1.jpg" alt="">
-    
-                            <h3>Remove product</h3>
-                        </a>
-                    </header>
-    
-                    <div class="content">
-                        <h1>셔츠</h1>
-                        <h3>사이즈 : M</h3>
-                    </div>
-    
-                    <footer class="content">
-                        
-                        <span class="qt-minus">수량 :</span>
-                        <span class="qt">1</span>
-                        
-    
-                        <h2 class="full-price">
-                            160000 <span>won</span>
-                        </h2>
-    
-                        <h2 class="price">
-                            160000 <span>won</span>
-                        </h2>
-                    </footer>
-                </article>
+            <div class="order-form" id = "order_list">   
             </div>
             
         </div>
@@ -300,10 +109,9 @@
         
                         <div class="profile_img">
                             
-                            <img src="https://www.mokpo.go.kr/build/images/1517/15172944/1517294405.jpg/666x1x85/666x1_1517294405.jpg" alt="프로필사진" id="output_image">
-
+                            <img src="" alt="프로필사진" id="output_image">
                             <div>
-                                <span class="username">email@naver.com</span>
+                                <span class="username" id="user_image"></span>
                             </div>
                             <div class="filebox">
                                 <label for="input_image">업로드</label>
@@ -318,14 +126,14 @@
                         <div class="input-group mb-3">
                             <label for="" class="col-sm-2 col-form-label">name</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  id="author_name" name="author_name" placeholder="이름" value="프로필 이름">
+                                <input type="text" class="form-control"  id="author_name" name="author_name" placeholder="" value="">
                             </div>
                         </div>
 
                         <div class="input-group mb-3">
                             <label for="" class="col-sm-2 col-form-label">password</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control"  id="password" name="password" placeholder="이름" value="패스워드 입력">
+                                <input type="text" class="form-control"  id="password" name="password" placeholder="" value="">
                             </div>
                         </div>
 
@@ -333,14 +141,14 @@
                         <div class="input-group mb-3">
                             <label for="" class="col-sm-2 col-form-label">phone</label>
                             <div class="col-sm-10">
-                                <input type="num" class="form-control"  id="phone" value="010-0000-0000">
+                                <input type="num" class="form-control"  id="phone" value="">
                             </div>
                         </div>
 
                         <div class="input-group mb-3">
                             <label for="" class="col-sm-2 col-form-label">address</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="address" name="address" value="강원도 산골마을">
+                                <input type="text" class="form-control" id="address" name="address" value="">
                             
                             </div>
                         </div> 
