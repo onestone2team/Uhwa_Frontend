@@ -109,6 +109,9 @@ img {
 }
 
 .profile-image img {
+    width: 152px;
+    height: 152px;
+    
     border-radius: 50%;
 }
 
@@ -573,6 +576,24 @@ Remove or comment-out the code block below to see how the browser will fall-back
 	-ms-transition: background .2s linear;
 	-o-transition: background .2s linear;
 	transition: background .2s linear;
+}
+
+.select-form {
+	margin-top: -80px;
+	float: right;
+	height: 80%;
+	position : relative;
+}
+
+.order-status {
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	position : absolute;
+	bottom : 0;
+	right: 0;
+	padding: 5px;
+	font-size: 20px;
 }
 
 /* 모달 창 화면 */
