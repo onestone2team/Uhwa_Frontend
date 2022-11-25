@@ -5,12 +5,11 @@ var amount_money = 0
 var inputnum = document.getElementById("countNum");
 var moneynum = document.getElementById("amout_money");
 
-
-window.addEventListener('load', function() {
+window.onload=()=>{
     $("#headers").load("../templates/navigation.html");
     inputnum.innerText = num;
     moneynum.innerText = 0;
-});
+}
 
 function selectButton(){
     const select_form = document.getElementById("select_form")

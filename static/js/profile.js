@@ -2,10 +2,10 @@ const gallery_mypage = document.getElementById("gallery_mypage")
 const gallery_bookmark = document.getElementById("gallery_bookmark")
 const order_list = document.getElementById("order_list")
 
-window.addEventListener('load', function() {
+window.onload=()=>{
     $("#headers").load("../templates/navigation.html");
 
-});
+}
 
 function tweetMy(){
     console.log("내 게시글 보기")

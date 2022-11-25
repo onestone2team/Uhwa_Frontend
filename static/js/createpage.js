@@ -1,6 +1,8 @@
-window.addEventListener('load', function() {
+window.onload=()=>{
     $("#headers").load("../templates/navigation.html");
-});
+
+    
+}
 
 function contentReadURL(input) {
     const previewButton = document.getElementById('content_preview')
