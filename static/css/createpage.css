@@ -215,3 +215,73 @@ section {
     background-position: center;
 
 }
+
+/* 모달 창 화면 */
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal.show {
+    display: block;
+  }
+  
+.modal_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+    width: 900px;
+    height: 550px;
+  
+    padding: 40px;
+  
+    text-align: center;
+  
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  
+    transform: translateX(-50%) translateY(-50%);
+}
+.container .row {
+    padding: 10px;
+}
+.modal_title{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.modal_title_side{
+    flex: 0 0 40px;
+    text-align: center;
+}
+
+.category-image {
+    border: 5px solid black;
+    height: 200px;
+    padding: 10px;
+}
+
+.image-show {
+    height: 100%;
+    background-color: antiquewhite;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.category-image:hover {
+    background-color: rgba(53, 114, 226, 0.466);
+}

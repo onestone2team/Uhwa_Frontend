@@ -1,4 +1,5 @@
 let image_list = []
+let style_name = 0
 window.onload = async function ViewCreate() {
     $("#headers").load("../templates/navigation.html");
 
@@ -19,7 +20,6 @@ window.onload = async function ViewCreate() {
         category.innerText = element.category_name
         category_frame.appendChild(category)
     })
-    console.log(image_list)
 }
 
 function contentReadURL(input) {
@@ -37,23 +37,41 @@ function contentReadURL(input) {
     }
 }
 
-function ReadURL(input) {
-    const previewButton = document.getElementById('style_preview')
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function(e) {
-        previewButton.setAttribute("style", `background-image:url(${e.target.result})`)
-        // document.getElementById('preview').src = e.target.result;
-      };
-      reader.readAsDataURL(input.files[0]);
-    } else {
-        previewButton.setAttribute("style", `background-image:none`)
-    }
+function ReadURL() {
+    const modal = document.querySelector('.modal');
+    const btnOpenPopup = document.querySelector('#editButton');
+    modal.style.display = 'block';
+   
+
+    const buttonCloseModal = document.getElementById("close_modal");
+    buttonCloseModal.addEventListener("click", e => {
+        modal.style.display = "none";  
+        document.body.style.overflowY = "visible";
+    });
+}
+
+function styleClick(num, name) {
+    const modal = document.querySelector('.modal');
+    const imageurl = document.getElementById(`image${num}`).style.backgroundImage;
+    const previewButton = document.getElementById('style_preview');
+    previewButton.setAttribute("style", `background-image:${imageurl}`);
+    style_name = name;
+    modal.style.display = "none";  
+    document.body.style.overflowY = "visible";
 }
 
 function imageStart(){
+    
+    var value_str = document.getElementById('select_value');
+    category_value = value_str.options[value_str.selectedIndex].value
+    console.log(style_name, category_value)
+
+
+    // 데이터 출력
     const imageView = document.getElementById('image_position')
     imageView.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png')"
+
+
 }
 
 function saveButton(){
@@ -71,7 +89,9 @@ function clotheChange(){
 
     category_value = value_str.options[value_str.selectedIndex].value
     document.getElementById("show_picture").src = image_list[category_value];
-
     imageView.style.backgroundImage = `url(${image_list[category_value]})`
-    
 }
+
+
+
+
