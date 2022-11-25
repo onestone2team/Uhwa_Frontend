@@ -1,7 +1,25 @@
-window.onload=()=>{
+let image_list = []
+window.onload = async function ViewCreate() {
     $("#headers").load("../templates/navigation.html");
 
-    
+    const response_categort= await fetch(`${BACK_END_URL}/products/category/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'GET',
+    })
+    categories = await response_categort.json()
+    console.log(categories)
+    category_frame = document.getElementById('select_value')
+    categories.forEach(element => {
+        const category = document.createElement('option')
+        image_list[element.id] = `${BACK_END_URL}${element.category_image}`
+        category.value = element.id
+        category.innerText = element.category_name
+        category_frame.appendChild(category)
+    })
+    console.log(image_list)
 }
 
 function contentReadURL(input) {
@@ -52,13 +70,8 @@ function clotheChange(){
     const imageView = document.getElementById('clothes_div')
 
     category_value = value_str.options[value_str.selectedIndex].value
-    var image_list = ["https://contents.lotteon.com/itemimage/_v230836/LE/12/08/81/50/56/_1/24/77/61/86/6/LE1208815056_1247761866_1.jpg/dims/optimize/dims/resizemc/400x400","https://image-cdn.hypb.st/https%3A%2F%2Fkr.hypebeast.com%2Ffiles%2F2020%2F07%2Fwhite-cap-nike-nasaseasons-helly-hansen-heron-preston-a-cold-wall-off-white-moncler-versace-vetements-05.jpg?w=1600&cbr=1&q=90&fit=max", "https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg", "https://contents.lotteon.com/itemimage/_v234846/LO/18/31/61/67/19/_1/83/16/16/72/0/LO1831616719_1831616720_1.jpg/dims/optimize/dims/resizemc/400x400"]
-
     document.getElementById("show_picture").src = image_list[category_value];
 
     imageView.style.backgroundImage = `url(${image_list[category_value]})`
-
     
-
-    console.log(category_value)
 }
