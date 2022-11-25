@@ -1,5 +1,6 @@
 let image_list = []
 let style_name = 0
+let image_data = 0
 window.onload = async function ViewCreate() {
     $("#headers").load("../templates/navigation.html");
 
@@ -11,7 +12,6 @@ window.onload = async function ViewCreate() {
         method: 'GET',
     })
     categories = await response_categort.json()
-    console.log(categories)
     category_frame = document.getElementById('select_value')
     categories.forEach(element => {
         const category = document.createElement('option')
@@ -41,11 +41,11 @@ function ReadURL() {
     const modal = document.querySelector('.modal');
     const btnOpenPopup = document.querySelector('#editButton');
     modal.style.display = 'block';
-   
+
 
     const buttonCloseModal = document.getElementById("close_modal");
     buttonCloseModal.addEventListener("click", e => {
-        modal.style.display = "none";  
+        modal.style.display = "none";
         document.body.style.overflowY = "visible";
     });
 }
@@ -56,42 +56,68 @@ function styleClick(num, name) {
     const previewButton = document.getElementById('style_preview');
     previewButton.setAttribute("style", `background-image:${imageurl}`);
     style_name = name;
-    modal.style.display = "none";  
+    modal.style.display = "none";
     document.body.style.overflowY = "visible";
 }
 
 function imageStart(){
-    
     var value_str = document.getElementById('select_value');
     category_value = value_str.options[value_str.selectedIndex].value
-    console.log(style_name, category_value)
+    const image = document.querySelector("input[type='file']");
+    let formdata = new FormData
+    formdata.append('image', image.files[0])
+    formdata.append('model', style_name)
+    formdata.append('category', category_value)
 
+    const response = fetch(`${BACK_END_URL}/products/machinelearning/`, {
+        headers:{
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+        },
+        method: 'POST',
+        body: formdata
+    }).then(response => {
+        return response.json()
+    }).then(data => {
+        const imageView = document.getElementById('clothes_div')
+        imageView.style.backgroundImage = `url(${BACK_END_URL}${data["data"]["image"]})`
+        image_data= data["data"]["image"]
 
-    // 데이터 출력
-    const imageView = document.getElementById('image_position')
-    imageView.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png')"
-
-
+    })
 }
 
 function saveButton(){
-    const imageView = document.getElementById('image_position')
-    if (imageView.style.backgroundImage){
+    let formdata = new FormData
+    let hide_option = true
+    formdata.append('model', style_name)
+    formdata.append('category', category_value)
+    formdata.append('image', image_data)
+    formdata.append('hide_option', hide_option)
+
+    const response = fetch(`${BACK_END_URL}/products/create/`, {
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("access"),
+        },
+        method: 'POST',
+        body: formdata
+    }).then(response => {
+        return response.json()
+    }).then(data => {
+        const imageView = document.getElementById('image_position')
+        // if (imageView.style.backgroundImage){
         alert("게시글 저장")
-    } else{
-        alert("머신러닝 이미지를 만들어야 저장이 가능합니다.")
-    }
+        // } else{
+        //     alert("머신러닝 이미지를 만들어야 저장이 가능합니다.")
+        // }
+    })
 }
 
 function clotheChange(){
     var value_str = document.getElementById('select_value');
     const imageView = document.getElementById('clothes_div')
-
     category_value = value_str.options[value_str.selectedIndex].value
     document.getElementById("show_picture").src = image_list[category_value];
     imageView.style.backgroundImage = `url(${image_list[category_value]})`
 }
-
 
 
 
