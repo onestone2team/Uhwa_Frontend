@@ -133,7 +133,7 @@ window.onload = async function ViewProfile() {
                             </header>
 
                             <div class="content">
-                            <a href="${FRONT_BASE_URL}/detail.html?id=${element.id}"><h1 >셔츠</h1></a>
+                            <a href="${FRONT_BASE_URL}/detail.html?id=${element.product}"><h1 >셔츠</h1></a>
                                 <h3>사이즈 : ${element.size}</h3>
                                 <div class="select-form">  
                                     <div class="order-status" id="order_status" style="

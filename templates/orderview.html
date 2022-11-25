@@ -16,66 +16,17 @@
 		<div class="container clearfix">
 
 			<div class="left">
-				<h2 class="subtotal">미확인 주문 : <span>24</span>건</h2>
+				<h2 class="subtotal">미확인 주문 : <span id="none_check">24</span>건</h2>
 			</div>
 
 			<div class="right">
-				<h1 class="total">Total: <span>680000</span>won</h1>
+				<h1 class="total">Total: <span id="total_input">680000</span>won</h1>
 			</div>
 
 		</div>
 	</footer>
 
-	<div class="container">
-
-		<section id="cart"> 
-			<article class="product">
-				<header>
-					<a class="remove">
-						<img src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
-					</a>
-				</header>
-
-				<div class="content">
-					<h1>셔츠</h1>
-					<h6>사이즈 : M</h6>
-					<div class="select-form">
-						<div>
-							<label for="pet-select">배송 상태 변경:</label>
-							<select name="status" id="status_select">
-								<option value="-1" id="" disabled selected>--상태 선택--</option>
-								<option value="0">주문 미확인</option>
-								<option value="1">주문 확인</option>
-								<option value="2">배송 시작</option>
-							</select>
-						</div>
-						<div class="order-save">
-							<button onclick="statusButton()">상태변경</button>
-						</div>
-						<div class="order-status" id="order_status">
-							주문 미확인
-						</div>
-					</div>
-					
-				</div>
-
-				<footer class="content">
-					<span class="qt-minus">주문 수량 :</span>
-					<span class="qt">2</span>
-				
-
-					<h2 class="full-price">
-						<span>320000</span> won
-					</h2>
-
-					<h2 class="price">
-						<span>160000</span> won
-					</h2>
-				</footer>
-			</article>
-
-		</section>
-
+	<div class="container" id="container">
 	</div>
 
 	<script src='../static/js/all_data.js'> </script>
