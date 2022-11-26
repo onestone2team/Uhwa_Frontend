@@ -54,6 +54,7 @@ function ReadURL(input) {
 function imageStart(){
     const imageView = document.getElementById('image_position')
     imageView.style.backgroundImage = "url('https://cdn.pixabay.com/photo/2019/08/01/12/36/illustration-4377408_960_720.png')"
+
 }
 
 function saveButton(){
