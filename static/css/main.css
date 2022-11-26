@@ -157,7 +157,8 @@ section {
   .card-content h2 {
     margin-top: 0;
     margin-bottom: .5em;
-    font-weight: normal;
+    font-size: 15px;
+    color: black;
   }
   
   .card-content p {

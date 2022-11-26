@@ -19,7 +19,7 @@
             <div style="display: flex;">
                 <div class="clothe-show" >
                     <p class="title-text">이미지</p>
-                    <image class="image-form" id="image-form" src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg"></image>
+                    <image class="image-form" id="image-form" src=""></image>
                 </div>
                 <div class="clothe-select">
                     <p class="title-text">옵션 선택</p>
@@ -53,12 +53,15 @@
                             <span> : </span>
                             <span id="amout_money">   </span>
                             <span id="amout_money">won</span>
-                        </div>
-                        
+                        </div>                     
+                    </div>
+                    <div class = "button-point">
                         <button class="order-button" onclick="orderButton()"> 주문하기 </button>
+                        <button class="order-button" onclick="bookmark()"> 북마크 저장 <i id="bookmark_icon" class="bi bi-heart"></i></button>
                     </div>
 
                 </div>
+                
             </div>
             <div class="comment-spaces">
                 <div class="comments-app" ng-app="commentsApp" ng-controller="CommentsController as cmntCtrl">
@@ -67,7 +70,7 @@
                     <div class="comment-form" id="comment-put">
                         <!-- Comment Avatar -->
                         <div class="comment-avatar">
-                            <img id="user-img" src="../static/img/image (3).png" style="height:100%">
+                            <img id="user-img" src="" style="height:100%">
                         </div>
             
                         <form class="form">
@@ -93,39 +96,7 @@
                     <div class="comments" id="commment">
                         <!-- Comment - Dummy -->
                         <div class="comment">
-                            <!-- Comment Avatar -->
-                            <div class="comment-avatar">
-                            <img src="https://webisfree.com/static/uploads/2017/8115_brline.jpg" style="height:100%">
-                            </div>
-
-                            <!-- Comment Box -->
-                            <div class="comment-box" >
-                                <div class="comment-text">리뷰 내용</div>
-                                    <div class="comment-footer">
-                                        <div class="comment-info">
-                                            <span class="comment-author">
-                                            <a>profilename</a>
-                                            </span>
-                                            <span class="comment-date">생성 시간</span>
-                                            <span>|</span>
-                                            <span classs="comment-grade"> 점수 : 5</span>
-                                        </div>
-                                        <div class="comment-actions" id="edit-button">
-                                            <i onclick="editComment()" class="bi bi-pencil-square"></i>
-                                            <span>/</span>
-                                            <i onclick="deleteComment()" class="bi bi-trash3"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Comment Edit -->
-                            <div class="comment-edit" id=edit_box>
-                                <textarea class="input" name="comment_edit" id="comment_edit" ng-model="cmntCtrl.comment.text"
-                                placeholder="Edit Review..." required></textarea>
-                                <div class="edit_button">
-                                    <button type="button" onclick="putComment()">add Review</button>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     

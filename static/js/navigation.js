@@ -22,7 +22,7 @@ function handleLogout(){
         console.log("로그아웃 되었습니다.");
       }else{
         // false는 취소버튼을 눌렀을 때, 취소됨
-        location.reload();
+        location.replace("../templates/main.html")
       }
 }
 

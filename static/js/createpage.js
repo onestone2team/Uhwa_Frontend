@@ -4,6 +4,14 @@ let image_data = 0
 window.onload = async function ViewCreate() {
     $("#headers").load("../templates/navigation.html");
 
+    const payload = localStorage.getItem("payload")
+    const parsed_payload = JSON.parse(payload)
+
+    if(!parsed_payload){
+        alert("권한이 없습니다. 로그인 해주세요")
+        location.replace("../templates/main.html")
+    }
+
     const response_categort= await fetch(`${BACK_END_URL}/products/category/`, {
         headers: {
             'content-type': 'application/json',
@@ -62,27 +70,42 @@ function styleClick(num, name) {
 
 function imageStart(){
     var value_str = document.getElementById('select_value');
-    category_value = value_str.options[value_str.selectedIndex].value
+    
     const image = document.querySelector("input[type='file']");
     let formdata = new FormData
-    formdata.append('image', image.files[0])
-    formdata.append('model', style_name)
-    formdata.append('category', category_value)
 
-    const response = fetch(`${BACK_END_URL}/products/machinelearning/`, {
-        headers:{
-            "Authorization": "Bearer " + localStorage.getItem("access"),
-        },
-        method: 'POST',
-        body: formdata
-    }).then(response => {
-        return response.json()
-    }).then(data => {
-        const imageView = document.getElementById('clothes_div')
-        imageView.style.backgroundImage = `url(${BACK_END_URL}${data["data"]["image"]})`
-        image_data= data["data"]["image"]
+    // 한글 확인
+    const regex = /[ㄱ-ㅎ가-힣]/;
 
-    })
+    // ========예외 처리========
+    if (value_str.options["selectedIndex"] == -1){
+        alert("굿즈를 선택해 주세요")
+    } else if (!image.files[0]){
+        alert("이미지 선택를 업로드 해주세요")
+    } else if (regex.test(image.files[0]["name"])==true){
+        alert("한글 이름의 파일은 올릴수 없습니다.")
+    
+    } else {
+        category_value = value_str.options[value_str.selectedIndex].value
+        formdata.append('image', image.files[0])
+        formdata.append('model', style_name)
+        formdata.append('category', category_value)
+
+        const response = fetch(`${BACK_END_URL}/products/machinelearning/`, {
+            headers:{
+                "Authorization": "Bearer " + localStorage.getItem("access"),
+            },
+            method: 'POST',
+            body: formdata
+        }).then(response => {
+            return response.json()
+        }).then(data => {
+            const imageView = document.getElementById('clothes_div')
+            imageView.style.backgroundImage = `url(${BACK_END_URL}${data["data"]["image"]})`
+            image_data= data["data"]["image"]
+        })
+    }
+    
 
 }
 
@@ -114,10 +137,11 @@ function saveButton(){
 
 function clotheChange(){
     var value_str = document.getElementById('select_value');
-    const imageView = document.getElementById('clothes_div')
     category_value = value_str.options[value_str.selectedIndex].value
-    document.getElementById("show_picture").src = image_list[category_value];
-    imageView.style.backgroundImage = `url(${image_list[category_value]})`
+    category_image = document.getElementById("show_picture")
+
+    category_image.style.backgroundImage = `url(${image_list[category_value]})`
+
 }
 
 
