@@ -158,7 +158,7 @@ async function putComment(comment_id) {
 async function deleteComment(comment_id){
 
 
-    const url = `${BACK_END_URL}/products/${product_id}/comment/${int}/`;
+    const url = `${BACK_END_URL}/products/${product_id}/comment/${comment_id}/`;
     console.log(url)
     const response = fetch(url, {
                     headers: {
