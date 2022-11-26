@@ -190,6 +190,7 @@ img {
     margin: 1rem;
     color: #fff;
     cursor: pointer;
+    width: 260px;
 }
 
 .gallery-image {

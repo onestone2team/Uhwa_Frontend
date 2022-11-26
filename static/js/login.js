@@ -20,19 +20,20 @@ async function loginButton() {
             "password": password
         })
     })
-    const response_json = await response.json()
-    localStorage.setItem("access", response_json.access);
-    localStorage.setItem("refresh", response_json.refresh);
-    const base64Url = response_json.access.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c){
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    localStorage.setItem("payload", jsonPayload);
+    
 
     if (response.status == 200){
       alert("로그인 완료")
+      const response_json = await response.json()
+      localStorage.setItem("access", response_json.access);
+      localStorage.setItem("refresh", response_json.refresh);
+      const base64Url = response_json.access.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c){
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      localStorage.setItem("payload", jsonPayload);
       window.location.replace(`${FRONT_BASE_URL}/main.html`);
     }
     else{
@@ -44,14 +45,10 @@ async function loginButton() {
 }
 
 async function signupButton() {
-  console.log("회원가입 버튼 눌림")
-
   const profilename = document.getElementById("signup_profilename").value;
   const password = document.getElementById("signup_password").value;
   const password_check = document.getElementById("signup_password2").value;
   const email = document.getElementById("signup_email").value;
-  
-  console.log(profilename, password, profilename, email);
 
   const response = await fetch(`${BACK_END_URL}/user/signup/`, {
       headers:{
@@ -66,7 +63,6 @@ async function signupButton() {
       })
   })
   const response_json = await response.json()
-  console.log(response_json)
 
   if (response.status == 201){
     alert(response_json["message"])
@@ -81,6 +77,8 @@ async function signupButton() {
       alert("password_check :"+response_json["password_check"])
     } else if(response_json["profilename"]){
       alert("profilename :"+response_json["profilename"])
+    } else {
+      alert("회원 가입 정보 이상")
     }
 	}
     
