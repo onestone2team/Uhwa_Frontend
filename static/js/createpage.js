@@ -83,6 +83,7 @@ function imageStart(){
         image_data= data["data"]["image"]
 
     })
+
 }
 
 function saveButton(){

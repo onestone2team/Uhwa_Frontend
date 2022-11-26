@@ -5,25 +5,21 @@ var amount_money = 0
 var inputnum = document.getElementById("countNum");
 var moneynum = document.getElementById("amout_money");
 
-window.onload = () => {
-    $("#headers").load("../templates/navigation.html");
-    inputnum.innerText = num;
-    moneynum.innerText = 0;
-}
-
 let url = window.location.search;
 console.log(url)
 let urlparam = new URLSearchParams(url);
 console.log(urlparam)
 // var product_id = urlParameter.split('=')[1]
-var product_id = urlparam.get("product_id")
+var product_id = urlparam.get("id")
 var comment_id = urlparam.get('comment_id')
 console.log(product_id)
 console.log(comment_id)
 
 //=======게시글 불러오기========
-window.onload = 
-async function ProductDetail() {
+window.onload = async function ProductDetail() {
+    $("#headers").load("../templates/navigation.html");
+    inputnum.innerText = num;
+    moneynum.innerText = 0;
 
     const product = await fetch(`${BACK_END_URL}/products/${product_id}/detail/`, {
         headers: {
@@ -67,7 +63,7 @@ async function ProductDetail() {
                                             <span classs="comment-grade"> 점수 : ${element.grade}</span>
                                         </div>
                                         <div class="comment-actions" id="edit-button">
-                                            <i onclick="editComment()" class="bi bi-pencil-square"></i>
+                                            <i onclick="editComment(${element.id})" class="bi bi-pencil-square"></i>
                                             <span>/</span>
                                             <i onclick="deleteComment()" class="bi bi-trash3"></i>
                                         </div>
@@ -132,9 +128,9 @@ async function addComment(){
 
 // }
 //==========댓글 삭제하기==========
-async function deleteComment(){
+async function deleteComment(int){
 
-    const url = `${BACK_END_URL}/products/${product_id}/comment/${comment_id}/`;
+    const url = `${BACK_END_URL}/products/${product_id}/comment/${int}/`;
     console.log(url)
     const response = fetch(url, {
                     headers: {
@@ -229,8 +225,8 @@ function addcommend() {
 //     console.log("댓글 삭제")
 // }
 
-function editComment() {
-    console.log("댓글 수정")
+function editComment(int) {
+    console.log(int)
     const editBox = document.getElementById('edit_box')
     if (editBox.style.display == 'none') {
         editBox.style.display = 'block';

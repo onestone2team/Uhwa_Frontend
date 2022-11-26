@@ -138,6 +138,7 @@ section {
   .card {
     background: white;
     margin-bottom: 2em; 
+    height: 50%;
   }
   
   .card a {
@@ -165,7 +166,7 @@ section {
   
   img {
     width: 100%;
-    height: auto;
+    height: 400px;
   }
   
   /*--------------------------------------------------------------
@@ -175,7 +176,7 @@ section {
     .cards {
       margin-top: -1em;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       flex-wrap: wrap;
     }
   
