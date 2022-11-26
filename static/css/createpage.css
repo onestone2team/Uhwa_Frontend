@@ -153,7 +153,7 @@ section {
 
 .scroll-form {
     padding: 10px;
-    width: 280px;
+    width: auto;
     height: auto;
     
 }
@@ -161,7 +161,10 @@ section {
     padding: 20px;
     width: 280px;
     height: auto;
-    
+    background-image: url("https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .scroll-style::-webkit-scrollbar {
@@ -169,8 +172,8 @@ section {
 }
 
 .fit-picture {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
     max-width: 250px;
     max-height: 180px;
 }
@@ -196,7 +199,7 @@ section {
 }
 
 .clothes-div {
-    background-image: url("https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg");
+    background-image: url("");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -285,3 +288,4 @@ section {
 .category-image:hover {
     background-color: rgba(53, 114, 226, 0.466);
 }
+

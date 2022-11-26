@@ -5,21 +5,19 @@ var amount_money = 0
 var inputnum = document.getElementById("countNum");
 var moneynum = document.getElementById("amout_money");
 
-
-// window.onload = () => {
-//     $("#headers").load("../templates/navigation.html");
-//     inputnum.innerText = num;
-//     moneynum.innerText = 0;
-// }
-
 let urlParameter = window.location.search;
 var product_id = urlParameter.split('=')[1]
 
-console.log(product_id)
-
 //=======게시글 불러오기========
-window.onload = 
-async function ProductDetail() {
+window.onload = async function ProductDetail() {
+
+    const payload = localStorage.getItem("payload")
+    const parsed_payload = JSON.parse(payload)
+
+    if(!parsed_payload){
+        alert("권한이 없습니다. 로그인 해주세요")
+        location.replace("../templates/main.html")
+    }
 
     $("#headers").load("../templates/navigation.html");
     inputnum.innerText = num;
@@ -33,20 +31,35 @@ async function ProductDetail() {
         method: 'GET',
     })
 
+
+    const user_data = await fetch(`${BACK_END_URL}/profile/`, {
+        headers: {
+            'content-type': 'application/json',
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: 'GET',
+    })
+    //=====프로필 이미지 변경=======
+    
+    user_data_json = await user_data.json()
+    user_profile = user_data_json["profile"]
+    const user_image = document.getElementById("user-img")
+    user_image.setAttribute("src", `${BACK_END_URL}${user_profile}`)
+
+
 //========게시글 이미지 불러오기========
     product_json = await product.json()
-    console.log(product_json)
 
     const product_image = document.getElementById("image-form")
     product_image.setAttribute("src", `${BACK_END_URL}${product_json.image}`)
 
 //========댓글 불러오기========
     comments = product_json.comments_set
-    console.log(comments)
-    console.log(comments[0].user)
+
     comment_frame = document.getElementById('comment-put')
 
     comments.forEach(element => {
+        console.log(element)
         const comment = document.createElement('div')
         comment.innerHTML =`<!-- Comments List -->
                             <div class="comments" id="commment">
@@ -68,7 +81,7 @@ async function ProductDetail() {
                                                     <span>|</span>
                                                     <span classs="comment-grade"> 점수 : ${element.grade}</span>
                                                 </div>
-                                                <div class="comment-actions" id="edit-button">
+                                                <div class="comment-actions" id="edit-button${element.id}">
                                                     <i onclick="editComment(${element.id})" class="bi bi-pencil-square"></i>
                                                     <span>/</span>
                                                     <i onclick="deleteComment(${element.id})" class="bi bi-trash3"></i>
@@ -78,7 +91,7 @@ async function ProductDetail() {
                                         </div>
                                     </div>
                                     <!-- Comment Edit -->
-                                    <div class="comment-edit" id=edit_box>
+                                    <div class="comment-edit" id="edit_box${element.id}">
                                         <textarea class="input" name="comment_edit" id="comment_edit" ng-model="cmntCtrl.comment.text"
                                         placeholder="Edit Review..." required></textarea>
                                         <div class="edit_button">
@@ -88,7 +101,20 @@ async function ProductDetail() {
                                 </div>
                             </div>`
         comment_frame.appendChild(comment)
+
+        if (element.user.profilename != user_data_json["profilename"]){
+            const comment_check = document.getElementById(`edit-button${element.id}`)
+            comment_check.style.display= "none"
+        }
     })
+
+    //======북마크 되어 있는지 확인
+    bookmark_list = product_json["bookmark"]
+    if (bookmark_list.includes(user_data_json["id"])){
+        const bookmark_icon = document.getElementById('bookmark_icon')
+        bookmark_icon.className = "bi bi-heart-fill"
+    }
+
 
 }//window.onload 괄호
 
@@ -108,31 +134,28 @@ async function addComment(){
                 "grade": query
             })
         })
+        comment_json = await response.json()
 
         if (response.status == 201) {
-            alert(response.data)
+            alert("댓글 입력 완료")
         }
         else {
-            alert(response.status)
+            alert(comment_json["message"])
         }
-
         location.reload()
     }
 //==========댓글 수정하기==========
-function editComment() {
-    console.log("댓글 수정")
-    const editBox = document.getElementById('edit_box')
+function editComment(id) {
+    const editBox = document.getElementById(`edit_box${id}`)
     if (editBox.style.display == 'none') {
         editBox.style.display = 'block';
     } else {
         editBox.style.display = 'none';
     }
-
 }
 
 async function putComment(comment_id) {
     const new_comment = document.getElementById('comment_edit').value
-    console.log(new_comment)
         const response = await fetch(`${BACK_END_URL}/products/${product_id}/comment/${comment_id}/`, {
             headers: {
                 "content-type": "application/json",
@@ -142,15 +165,17 @@ async function putComment(comment_id) {
             body: JSON.stringify({
                 "comment": new_comment
             })
-        }).then(respond =>{
-            if (respond.status == 200) {
-                alert(respond.data)
-            }
-            else {
-                alert(respond.status)
-            }
-            location.reload()
         })
+        comment_json = await response.json()
+
+        if (response.status == 201) {
+            alert("댓글 수정 완료")
+        } else {
+            console.log(comment_json['message'])
+        }
+
+        location.reload()
+
 }
 
 //==========댓글 삭제하기==========
@@ -158,8 +183,7 @@ async function putComment(comment_id) {
 async function deleteComment(comment_id){
 
 
-    const url = `${BACK_END_URL}/products/${product_id}/comment/${int}/`;
-    console.log(url)
+    const url = `${BACK_END_URL}/products/${product_id}/comment/${comment_id}/`;
     const response = fetch(url, {
                     headers: {
                         "content-type": "application/json",
@@ -168,8 +192,8 @@ async function deleteComment(comment_id){
                     method: "DELETE"
                     }).then(respond => {
               if (respond.status == 204) {
-                                            alert(respond.status);
-                                        }
+                    alert("댓글을 삭제 했습니다.");
+                }
             else {
                     alert("댓글이 삭제되지 않았습니다. 다시 시도해주세요")
                  }
@@ -181,30 +205,29 @@ async function deleteComment(comment_id){
 };
         
 //========북마크 추가하기===========준표님???=====
-async function bookmark(product_id) {
+async function bookmark() {
+    
+    const response = await fetch(`${BACK_END_URL}/products/${product_id}/bookmark/`, {
+        headers: {
+            "content-type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("access")
+        },
+        method: "POST",
+    })
 
-        const response = await fetch(`${BACK_END_URL}/detail/${product_id}/bookmark/`, {
-            headers: {
-                "content-type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("access")
-            },
-            method: "POST",
 
-        })
-        if (response.status == 200) {
-            alert(response.message)
-        }
-        else {
-            alert(response.status)
-        }
-
+    if (response.status==200 || response.status==202){
+        alert("북마크 변경 완료")
+        location.reload();
     }
+    
+   
+}
 
 async function orderButton() {
-        console.log("주문 버튼 클릭")
-        console.log(num, size, amount_money)
-        console.log(String(num))
-        
+    
+    if (num!=0 && size!=0 && amount_money !=0){
+
         const url = `${BACK_END_URL}/order/list/${product_id}/`
         console.log(url)
         const response = await fetch(url, {
@@ -221,11 +244,16 @@ async function orderButton() {
             })
 
             if (response.status == 201) {
-                alert(response.status)
+                alert("주문 완료")
+                location.replace("../templates/profile.html")
             }
             else {
                 alert(response.status)
             }
+    } else{
+        alert("주문 옵션을 다시 확인해 주세요")
+    }
+    
      
 }    
 //==================================================================    
@@ -251,7 +279,6 @@ function upButton() {
     inputnum.innerText = num;
     amount_money = money * num;
     moneynum.innerText = amount_money;
-    console.log(amount_money)
 }
 
 function downButton() {
@@ -260,7 +287,6 @@ function downButton() {
         inputnum.innerText = num;
         amount_money = money * num;
         moneynum.innerText = amount_money;
-        console.log(amount_money)
     }
 
 }

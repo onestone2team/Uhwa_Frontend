@@ -8,6 +8,11 @@ window.onload = async function ViewProfile() {
     //=======회원 정보 불러오기========
     var payload = localStorage.getItem("payload")
     var parsed_payload = await JSON.parse(payload)
+    
+    if(!parsed_payload){
+        alert("권한이 없습니다. 로그인 해주세요")
+        location.replace("../templates/main.html")
+    }
 
     const response_profile = await fetch(`${BACK_END_URL}/profile/`, {
         headers: {
