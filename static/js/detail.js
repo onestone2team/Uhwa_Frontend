@@ -5,6 +5,7 @@ var amount_money = 0
 var inputnum = document.getElementById("countNum");
 var moneynum = document.getElementById("amout_money");
 
+
 // window.onload = () => {
 //     $("#headers").load("../templates/navigation.html");
 //     inputnum.innerText = num;
@@ -13,11 +14,13 @@ var moneynum = document.getElementById("amout_money");
 
 let urlParameter = window.location.search;
 var product_id = urlParameter.split('=')[1]
+
 console.log(product_id)
 
 //=======게시글 불러오기========
 window.onload = 
 async function ProductDetail() {
+
     $("#headers").load("../templates/navigation.html");
     inputnum.innerText = num;
     moneynum.innerText = 0;
@@ -71,6 +74,7 @@ async function ProductDetail() {
                                                     <i onclick="deleteComment(${element.id})" class="bi bi-trash3"></i>
                                                 </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <!-- Comment Edit -->
@@ -150,9 +154,11 @@ async function putComment(comment_id) {
 }
 
 //==========댓글 삭제하기==========
+
 async function deleteComment(comment_id){
 
-    const url = `${BACK_END_URL}/products/${product_id}/comment/${comment_id}/`;
+
+    const url = `${BACK_END_URL}/products/${product_id}/comment/${int}/`;
     console.log(url)
     const response = fetch(url, {
                     headers: {
@@ -258,3 +264,4 @@ function downButton() {
     }
 
 }
+

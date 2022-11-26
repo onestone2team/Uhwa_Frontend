@@ -70,7 +70,6 @@ window.onload = async function ViewProfile() {
         },
         method: 'GET',
     })
-    
     bookmarks = await response_bookmark.json()
     bookmark_frame = document.getElementById('gallery_bookmark')
     bookmarks.forEach(element => {
@@ -126,14 +125,14 @@ window.onload = async function ViewProfile() {
 
         order.innerHTML = `<header>
                                 <a class="remove">
-                                    <img src="../static/img/image (4).png" alt="">
+                                    <img src="${BACK_END_URL}${element.product.image}" alt="">
             
                                     <h3>Remove product</h3>
                                 </a>
                             </header>
 
                             <div class="content">
-                            <a href="${FRONT_BASE_URL}/detail.html?id=${element.product}"><h1 >셔츠</h1></a>
+                            <a href="${FRONT_BASE_URL}/detail.html?id=${element.product.id}"><h1 >셔츠</h1></a>
                                 <h3>사이즈 : ${element.size}</h3>
                                 <div class="select-form">  
                                     <div class="order-status" id="order_status" style="
