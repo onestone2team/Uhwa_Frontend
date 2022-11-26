@@ -198,11 +198,7 @@ async function orderButton() {
         console.log("주문 버튼 클릭")
         console.log(num, size, amount_money)
         console.log(String(num))
-        // var snum=String(num)
-        // var ssize=String(size)
-        // var samount_money=String(amount_money)
-        // var id=String(product_id)
-        //주문버튼 누르면 마이페이지 내 주문목록 조회로 이동
+        
         const url = `${BACK_END_URL}/order/list/${product_id}/`
         console.log(url)
         const response = await fetch(url, {
