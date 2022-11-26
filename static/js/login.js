@@ -70,7 +70,7 @@ async function signupButton() {
 
   if (response.status == 201){
     alert(response_json["message"])
-    window.location.replace(`${FRONT_BASE_URL}/main.html`);
+    window.location.replace(`${FRONT_BASE_URL}/login.html`);
   }
 	else{
     if(response_json["email"]){

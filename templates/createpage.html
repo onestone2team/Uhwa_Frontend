@@ -37,9 +37,9 @@
                             
                             <label for="input-file" class="label-style">
                                 <div>style 이미지</div>
-                                <div class="btn-upload" id="style_preview">파일 업로드하기</div>
+                                <div class="btn-upload" id="style_preview" onclick="ReadURL();">파일 선택 하기</div>
                             </label>
-                            <input type="file" name="content" id="input-file" class="inputfile" onchange="ReadURL(this);">
+                            
                             
                         </div>
                     </div>
@@ -65,18 +65,60 @@
                 </div>
               </div>
               <div class="col-5 test clothes-div" id="clothes_div">
-                <div class="image-position" id="image_position">
-                </div>
-
                 <button class="save-button" id="content_preview" onclick="saveButton()">상품 게시글 저장</button>
-              </div>
             </div>
-
-            
-        </div>
-
-        
+        </div>        
     </section>
+
+    <!-- modal 창 화면 -->
+    <div class="modal">
+        <div class="modal_body">
+            <div class="modal_title">
+                <div class="modal_title_side"></div>
+                <div> 스타일 이미지 선택 </div>
+                <div class="modal_title_side">
+                    <span id="close_modal" class="material-icons-outlined">
+                        X
+                    </span>
+                </div>
+            </div>
+            <div class="media-body" id ="four">  
+                <div class="container">
+                    <div class="row">
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image1" onclick="styleClick('1','candy')"
+                            style="background-image: url('https://www.artmajeur.com/medias/standard/g/e/gerard-bissel/artwork/13439405_candy.jpg');"></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image2" onclick="styleClick('2','feathers')"
+                            style="background-image: url('https://interior.onoffmarket.com/data/item/202008/1598516697_l1');" ></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image3" onclick="styleClick('3','mosaic')"
+                            style="background-image: url('https://static.vecteezy.com/system/resources/previews/000/238/615/original/modern-colorful-mosaic-cristal-background-vector.jpg');"></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image4" onclick="styleClick('4','la_muse')"
+                            style="background-image: url('https://www.pablopicasso.org/images/paintings/the-muse.jpg');"></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image5" onclick="styleClick('5','starry_night')"
+                            style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1200px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg');"></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image6" onclick="styleClick('6','the_scream')"
+                            style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/The_Scream.jpg/1607px-The_Scream.jpg');"></div>
+                        </div>
+                        <div class="col-3 category-image">
+                            <div class="image-show" id="image7" onclick="styleClick('7','udnie')"
+                            style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Francis_Picabia%2C_1913%2C_Udnie_%28Young_American_Girl%2C_The_Dance%29%2C_oil_on_canvas%2C_290_x_300_cm%2C_Mus%C3%A9e_National_d%E2%80%99Art_Moderne%2C_Centre_Georges_Pompidou%2C_Paris..jpg/1200px-Francis_Picabia%2C_1913%2C_Udnie_%28Young_American_Girl%2C_The_Dance%29%2C_oil_on_canvas%2C_290_x_300_cm%2C_Mus%C3%A9e_National_d%E2%80%99Art_Moderne%2C_Centre_Georges_Pompidou%2C_Paris..jpg');"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src='../static/js/all_data.js'> </script>
     <script src='../static/js/createpage.js'> </script>
 </body>
