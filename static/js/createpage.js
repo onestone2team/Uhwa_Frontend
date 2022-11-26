@@ -1,6 +1,8 @@
 let image_list = []
 let style_name = 0
 let image_data = 0
+let hide_option = false
+
 window.onload = async function ViewCreate() {
     $("#headers").load("../templates/navigation.html");
 
@@ -28,6 +30,17 @@ window.onload = async function ViewCreate() {
         category.innerText = element.category_name
         category_frame.appendChild(category)
     })
+
+    var check = $("input[type='checkbox']");
+    check.click(function(){
+        $("p").toggle();
+        if(hide_option == false) {
+            hide_option=true
+        } else {
+            hide_option=false
+        }
+        
+    });
 }
 
 function contentReadURL(input) {
@@ -111,7 +124,7 @@ function imageStart(){
 
 function saveButton(){
     let formdata = new FormData
-    let hide_option = true
+
     formdata.append('model', style_name)
     formdata.append('category', category_value)
     formdata.append('image', image_data)
@@ -127,11 +140,9 @@ function saveButton(){
         return response.json()
     }).then(data => {
         const imageView = document.getElementById('image_position')
-        // if (imageView.style.backgroundImage){
+        
         alert("게시글 저장")
-        // } else{
-        //     alert("머신러닝 이미지를 만들어야 저장이 가능합니다.")
-        // }
+        location.replace("../templates/main.html")
     })
 }
 
