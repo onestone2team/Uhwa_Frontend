@@ -17,10 +17,9 @@
     <section>
         <div class="work-spaces">
             <div style="display: flex;">
-                <div class="clothe-show">
+                <div class="clothe-show" >
                     <p class="title-text">이미지</p>
-                    <image class="image-form" src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg"></image>
-
+                    <image class="image-form" id="image-form" src="https://www.muji.com/wp-content/uploads/sites/12/2021/02/026.jpg"></image>
                 </div>
                 <div class="clothe-select">
                     <p class="title-text">옵션 선택</p>
@@ -86,7 +85,7 @@
                                 </fieldset>
                             </div>
                             <div class="form-row">
-                                <button type="button" onclick="addcommend()">add Review</button>
+                                <button type="button" onclick="addComment()">add Review</button>
                             </div>
                         </form>
                     </div>
@@ -109,7 +108,7 @@
                                             </span>
                                             <span class="comment-date">생성 시간</span>
                                             <span>|</span>
-                                            <span> 점수 : 5</span>
+                                            <span classs="comment-grade"> 점수 : 5</span>
                                         </div>
                                         <div class="comment-actions" id="edit-button">
                                             <i onclick="editComment()" class="bi bi-pencil-square"></i>
