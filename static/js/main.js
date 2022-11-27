@@ -11,10 +11,9 @@ pageNum = 1
 async function show_product_list() {
     const response = await fetch(`${BACK_END_URL}/products/?page=${pageNum}`, {
         headers: {
-            "Access-Control-Allow-Origin" : BACK_END_URL,
+            "Access-Control-Allow-Origin" : *,
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Expose-Headers": "Authorization",
-            'content-type': 'applycation/json',
+            'content-type': 'applycation/json'
         },
         method: 'GET',
     })
