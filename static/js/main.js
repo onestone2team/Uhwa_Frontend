@@ -13,7 +13,7 @@ async function show_product_list() {
         headers: {
             "Access-Control-Allow-Origin" : BACK_END_URL,
             "Access-Control-Allow-Credentials": true,
-            "Access-Control-Expose-Headers": Authorization,
+            "Access-Control-Expose-Headers": "Authorization",
             'content-type': 'applycation/json',
         },
         method: 'GET',
