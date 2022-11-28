@@ -21,7 +21,7 @@ section {
    /*--------------------------------------------------------------
   cover styles
   --------------------------------------------------------------*/
-  
+ 
   .cover-image {
     width: auto;
     height: 250px;
@@ -37,16 +37,18 @@ section {
     background-color: rgba(235, 243, 243, 0.39);
     width: 90%;
     height: auto;
-    padding: 10px 20px;
+    padding: 10px 0px 10px 250px;
   }
 
   .cover-text h2{
-    color :rgb(190, 19, 233);
+    text-align: left;
+    color :rgb(77, 53, 18);
+    font-family: Raleway;
   }
 
 
   .inner-text{
-    text-align: center;
+    text-align: left;
     font-size: 15px;
     color :rgb(107, 97, 97);
   }

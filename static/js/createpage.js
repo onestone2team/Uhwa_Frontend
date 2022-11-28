@@ -21,11 +21,13 @@ window.onload = async function ViewCreate() {
         },
         method: 'GET',
     })
+    
     categories = await response_categort.json()
     category_frame = document.getElementById('select_value')
     categories.forEach(element => {
         const category = document.createElement('option')
         image_list[element.id] = `${BACK_END_URL}${element.category_image}`
+        
         category.value = element.id
         category.innerText = element.category_name
         category_frame.appendChild(category)
@@ -83,7 +85,6 @@ function styleClick(num, name) {
 
 function imageStart(){
     var value_str = document.getElementById('select_value');
-    
     const image = document.querySelector("input[type='file']");
     let formdata = new FormData
 
@@ -119,7 +120,6 @@ function imageStart(){
         })
     }
     
-
 }
 
 function saveButton(){
