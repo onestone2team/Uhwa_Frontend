@@ -1,2 +1,3 @@
-const FRONT_BASE_URL = "https://silver-squirrel-09a9b2.netlify.app/templates"
+const FRONT_BASE_URL = "http://127.0.0.1:5500/templates"
 const BACK_END_URL = "https://www.joonpyo.shop"
+

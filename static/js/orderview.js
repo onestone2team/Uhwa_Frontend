@@ -92,14 +92,13 @@ orderlist.forEach(element => {
 }
 
 async function statusButton(order_id) {
-  console.log("상태 변경 버튼 눌림")
   var status_str = document.getElementById(`status_select${order_id}`);
   var status_text = document.getElementById('order_status');
 
   orderstatus = status_str.options[status_str.selectedIndex].text
   value = status_str.options[status_str.selectedIndex].value
 
-  console.log(orderstatus, value)
+  console.log(order_id, value)
   if (value >= 0){
     const response_status = await fetch(`${BACK_END_URL}/order/list/admin/${order_id}/`, {
       headers:{

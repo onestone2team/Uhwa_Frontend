@@ -9,9 +9,10 @@ pageNum = 1
 
 
 async function show_product_list() {
+    console.log(BACK_END_URL)
     const response = await fetch(`${BACK_END_URL}/products/?page=${pageNum}`, {
         headers: {
-            'content-type': 'applycation/json'
+            'content-type': 'application/json'
         },
         method: 'GET',
     })
@@ -38,7 +39,6 @@ async function show_product_list() {
     })
 }
 function pageNext1() {
-    console.log(total_page)
     if (pageNum > 0 && pageNum < total_page) {
         ++pageNum
         show_product_list()

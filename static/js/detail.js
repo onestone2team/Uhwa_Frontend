@@ -1,6 +1,6 @@
 var num = 0
 var size = 0
-var money = 30000
+var money = 0
 var amount_money = 0
 var inputnum = document.getElementById("countNum");
 var moneynum = document.getElementById("amout_money");
@@ -49,6 +49,7 @@ window.onload = async function ProductDetail() {
 
 //========게시글 이미지 불러오기========
     product_json = await product.json()
+    money = product_json["category"]
 
     const product_image = document.getElementById("image-form")
     product_image.setAttribute("src", `${BACK_END_URL}${product_json.image}`)
